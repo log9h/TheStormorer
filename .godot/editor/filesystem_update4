@@ -1,0 +1,7 @@
+res://Scenes/main.tscn
+res://Resources/box.tres
+res://Resources/knight.tres
+res://Resources/crab.tres
+res://Scenes/enemy.tscn
+res://Scenes/Effects/wet_effect.tscn
+res://Scenes/ui_top_right.tscn

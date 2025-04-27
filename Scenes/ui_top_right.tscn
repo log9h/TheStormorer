@@ -1,0 +1,193 @@
+[gd_scene load_steps=14 format=3 uid="uid://dc2blau7i53dn"]
+
+[ext_resource type="Script" path="res://Scripts/hp_shield_bar.gd" id="1_sci8v"]
+[ext_resource type="Texture2D" uid="uid://hhtkclrk3gu2" path="res://Assets/Bars/hp-bar-frame.png" id="2_pn2m7"]
+[ext_resource type="Texture2D" uid="uid://cbljhhig22x5q" path="res://Assets/Bars/hp-bar-empty.png" id="3_ycdfw"]
+[ext_resource type="Texture2D" uid="uid://cw0l63kgaklrp" path="res://Assets/Bars/hp-bar-full.png" id="4_1t88c"]
+[ext_resource type="FontFile" uid="uid://p13r4thetkqe" path="res://Assets/pixelfontnokia.ttf" id="4_wlx5h"]
+[ext_resource type="Script" path="res://Scripts/shifting_text.gd" id="5_1l5eq"]
+[ext_resource type="Texture2D" uid="uid://r18ulcmf4s05" path="res://Assets/ground-tiles.png" id="6_4kpc6"]
+[ext_resource type="Texture2D" uid="uid://cvds8q7my7h0e" path="res://Assets/Bars/shield-bar.png" id="7_bd0t3"]
+[ext_resource type="Script" path="res://Scripts/map.gd" id="8_8mp3m"]
+[ext_resource type="Texture2D" uid="uid://f0ywqfh7pwg6" path="res://Assets/map_tiles.png" id="10_dbu3y"]
+[ext_resource type="FontFile" uid="uid://b7yylpgbk15oi" path="res://Assets/pixel_font_3x4.ttf" id="11_wabh1"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3ga07"]
+script = ExtResource("5_1l5eq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nnkqw"]
+font = ExtResource("11_wabh1")
+
+[node name="UI_TopRight" type="CanvasLayer"]
+
+[node name="Anchor" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+
+[node name="HpShieldBar" type="Node2D" parent="Anchor"]
+position = Vector2(-130, 89)
+script = ExtResource("1_sci8v")
+
+[node name="HPBarFrame" type="Sprite2D" parent="Anchor/HpShieldBar"]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("2_pn2m7")
+
+[node name="HPBar" type="Node2D" parent="Anchor/HpShieldBar"]
+position = Vector2(130, -78)
+scale = Vector2(2, 2)
+
+[node name="Bar" type="TextureProgressBar" parent="Anchor/HpShieldBar/HPBar"]
+offset_left = -121.0
+offset_top = 15.0
+offset_right = -9.0
+offset_bottom = 73.0
+max_value = 112.0
+value = 50.0
+texture_under = ExtResource("3_ycdfw")
+texture_progress = ExtResource("4_1t88c")
+metadata/_edit_use_anchors_ = true
+
+[node name="HPLabel" type="RichTextLabel" parent="Anchor/HpShieldBar"]
+offset_left = -112.0
+offset_top = -36.0
+offset_right = 26.0
+offset_bottom = 42.0
+theme_override_colors/default_color = Color(0.811765, 0.776471, 0.721569, 1)
+theme_override_fonts/normal_font = ExtResource("4_wlx5h")
+bbcode_enabled = true
+text = "[shifting_text shift=7]HP:10/23[/shifting_text]"
+custom_effects = [SubResource("RichTextEffect_3ga07")]
+metadata/_edit_use_anchors_ = true
+
+[node name="ShieldBar" type="Node2D" parent="Anchor/HpShieldBar"]
+position = Vector2(52, 42)
+scale = Vector2(2, 2)
+
+[node name="Bar" type="TextureProgressBar" parent="Anchor/HpShieldBar/ShieldBar"]
+offset_left = -25.5
+offset_top = -14.0
+offset_right = 26.5
+offset_bottom = 26.0
+value = 100.0
+texture_progress = ExtResource("7_bd0t3")
+
+[node name="ShieldLabel" type="RichTextLabel" parent="Anchor/HpShieldBar"]
+offset_left = -2.0
+offset_top = 24.0
+offset_right = 136.0
+offset_bottom = 102.0
+theme_override_colors/default_color = Color(0.235294, 0.67451, 0.843137, 1)
+theme_override_fonts/normal_font = ExtResource("4_wlx5h")
+bbcode_enabled = true
+text = "[shifting_text shift=7]+21[/shifting_text]"
+custom_effects = [SubResource("RichTextEffect_3ga07")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Map" type="Node2D" parent="Anchor"]
+position = Vector2(-130, 89)
+script = ExtResource("8_8mp3m")
+
+[node name="Ground0" type="Sprite2D" parent="Anchor/Map"]
+visible = false
+position = Vector2(-96, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 1
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground0"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="Ground1" type="Sprite2D" parent="Anchor/Map"]
+visible = false
+position = Vector2(-64, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 3
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground1"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="Ground2" type="Sprite2D" parent="Anchor/Map"]
+position = Vector2(-32, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 3
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground2"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="Ground3" type="Sprite2D" parent="Anchor/Map"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 3
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground3"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="Ground4" type="Sprite2D" parent="Anchor/Map"]
+position = Vector2(32, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 2
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground4"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="Ground5" type="Sprite2D" parent="Anchor/Map"]
+position = Vector2(64, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 2
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground5"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="Ground6" type="Sprite2D" parent="Anchor/Map"]
+position = Vector2(96, 48)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+
+[node name="Icon" type="Sprite2D" parent="Anchor/Map/Ground6"]
+position = Vector2(0, -16)
+texture = ExtResource("10_dbu3y")
+hframes = 4
+
+[node name="CurrentTile" type="Sprite2D" parent="Anchor/Map"]
+position = Vector2(-32, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("6_4kpc6")
+hframes = 5
+frame = 4
+
+[node name="StageLabel" type="Label" parent="Anchor/Map"]
+offset_left = 17.0
+offset_top = -98.0
+offset_right = 161.0
+offset_bottom = -41.0
+text = "
+STAGE 1"
+label_settings = SubResource("LabelSettings_nnkqw")

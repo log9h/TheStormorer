@@ -1,0 +1,275 @@
+[gd_scene load_steps=11 format=3 uid="uid://bic1gh3aox106"]
+
+[ext_resource type="Script" path="res://Scripts/stormorer.gd" id="1_ei6cb"]
+[ext_resource type="Texture2D" uid="uid://d4l316fag77i1" path="res://Assets/stormorer.png" id="2_dae8f"]
+[ext_resource type="FontFile" uid="uid://b7yylpgbk15oi" path="res://Assets/pixel_font_3x4.ttf" id="3_o7y4a"]
+[ext_resource type="Texture2D" uid="uid://cdjx7syckmlss" path="res://Assets/infobox-bg.png" id="4_k1qdu"]
+[ext_resource type="Texture2D" uid="uid://f0ywqfh7pwg6" path="res://Assets/map_tiles.png" id="5_ny68j"]
+[ext_resource type="Texture2D" uid="uid://d3u8d3yex17fc" path="res://Assets/map_ground_white.png" id="6_21lkc"]
+
+[sub_resource type="Theme" id="Theme_lga7s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5o1u"]
+texture = ExtResource("4_k1qdu")
+modulate_color = Color(1, 1, 1, 0.501961)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7rdbw"]
+texture = ExtResource("4_k1qdu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1g4hi"]
+font = ExtResource("3_o7y4a")
+
+[node name="Stormorer" type="Node2D"]
+position = Vector2(-354, -212)
+script = ExtResource("1_ei6cb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(548, 419)
+scale = Vector2(2, 2)
+texture = ExtResource("2_dae8f")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Label" type="RichTextLabel" parent="UI"]
+offset_left = 361.0
+offset_top = 472.0
+offset_right = 639.0
+offset_bottom = 523.0
+theme_override_constants/line_separation = -6
+theme_override_fonts/normal_font = ExtResource("3_o7y4a")
+bbcode_enabled = true
+text = "
+THE STORMORER
+THIS ANCIENT CONSTRUCTION LETS YOU
+ SEE VERY-VERY FAR AND
+ CONTROL [color=#38d973]THE CALM[/color] AND [color=#e6482e]THE STORM[/color]."
+
+[node name="MapView" type="ScrollContainer" parent="UI"]
+offset_left = 361.0
+offset_top = 405.0
+offset_right = 437.0
+offset_bottom = 437.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_lga7s")
+theme_override_styles/panel = SubResource("StyleBoxTexture_l5o1u")
+follow_focus = true
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MapView"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="MapTile0" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile0"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile0/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile0"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile1" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile1"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile1/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile1"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile2" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile2"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile2/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile2"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile3" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile3"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile3/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile3"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile4" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile4"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile4/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile4"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile5" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile5"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile5/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile5"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile6" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile6"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile6/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile6"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile7" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile7"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile7/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile7"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile8" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile8"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile8/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile8"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="MapTile9" type="VBoxContainer" parent="UI/MapView/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tile" type="PanelContainer" parent="UI/MapView/HBoxContainer/MapTile9"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TileSprite" type="Sprite2D" parent="UI/MapView/HBoxContainer/MapTile9/Tile"]
+texture = ExtResource("5_ny68j")
+centered = false
+hframes = 4
+
+[node name="Ground" type="TextureRect" parent="UI/MapView/HBoxContainer/MapTile9"]
+layout_mode = 2
+texture = ExtResource("6_21lkc")
+
+[node name="ShiftLeftButton" type="Button" parent="UI"]
+offset_left = 656.0
+offset_top = 433.0
+offset_right = 832.0
+offset_bottom = 473.0
+theme_override_fonts/font = ExtResource("3_o7y4a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7rdbw")
+text = "
+SHIFT STORMS TO LEFT"
+
+[node name="ShiftRightButton" type="Button" parent="UI"]
+offset_left = 656.0
+offset_top = 475.0
+offset_right = 832.0
+offset_bottom = 515.0
+theme_override_fonts/font = ExtResource("3_o7y4a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7rdbw")
+text = "
+SHIFT STORMS TO RIGHT"
+
+[node name="AmplifyButton" type="Button" parent="UI"]
+offset_left = 656.0
+offset_top = 517.0
+offset_right = 832.0
+offset_bottom = 557.0
+theme_override_colors/font_color = Color(0.901961, 0.282353, 0.180392, 1)
+theme_override_fonts/font = ExtResource("3_o7y4a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7rdbw")
+text = "
+AMPLIFY THE STORM
+"
+
+[node name="DamageModLabel" type="Label" parent="UI/AmplifyButton"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 224.0
+offset_bottom = 73.0
+text = "CURRENT DAMAGE MOD: 2"
+label_settings = SubResource("LabelSettings_1g4hi")
+
+[connection signal="button_down" from="UI/ShiftLeftButton" to="." method="_on_shift_left_button_button_down"]
+[connection signal="button_down" from="UI/ShiftRightButton" to="." method="_on_shift_right_button_button_down"]
+[connection signal="button_down" from="UI/AmplifyButton" to="." method="_on_amplify_button_button_down"]

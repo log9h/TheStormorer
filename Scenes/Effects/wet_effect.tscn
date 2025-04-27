@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfvas4ibxn6vm"]
+
+[ext_resource type="Texture2D" uid="uid://cdjx7syckmlss" path="res://Assets/infobox-bg.png" id="1_7jr1x"]
+[ext_resource type="Texture2D" uid="uid://emqot0reaav6" path="res://Assets/effects.png" id="2_0lq35"]
+[ext_resource type="Script" path="res://Scripts/Effects/wet_effect.gd" id="2_6lhdh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ipxy"]
+texture = ExtResource("1_7jr1x")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gexxh"]
+atlas = ExtResource("2_0lq35")
+region = Rect2(24, 0, 8, 8)
+
+[node name="WetEffect" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = -0.16
+offset_bottom = -0.0400009
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8ipxy")
+script = ExtResource("2_6lhdh")
+
+[node name="WetEffect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 0.089
+offset_right = 14.928
+offset_bottom = 14.576
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gexxh")
+stretch_mode = 4

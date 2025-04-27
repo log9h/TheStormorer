@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxduwk6h7qcx7"]
+
+[ext_resource type="Texture2D" uid="uid://3cgospsqntdn" path="res://Assets/Enemy Sprites/box.png" id="1_fuucp"]
+[ext_resource type="Script" path="res://Scripts/death_anim.gd" id="1_oyqda"]
+
+[node name="DeathAnim" type="RigidBody2D"]
+linear_velocity = Vector2(0, -200)
+angular_velocity = -5.0
+script = ExtResource("1_oyqda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_fuucp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

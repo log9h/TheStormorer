@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=6 format=3 uid="uid://dn2lelhadtdsg"]
+
+[ext_resource type="Script" path="res://Scripts/base_attack.gd" id="1_bqbyc"]
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_l5gcd"]
+[ext_resource type="Texture2D" uid="uid://b5b47g2v6sond" path="res://Assets/Enemy Sprites/knight.png" id="3_ns1ou"]
+
+[sub_resource type="Resource" id="Resource_holsu"]
+script = ExtResource("1_bqbyc")
+Icon = 0
+damage = 3
+info = "Inflict 3 damage"
+
+[sub_resource type="Resource" id="Resource_0j7o8"]
+script = ExtResource("1_bqbyc")
+Icon = 0
+damage = 5
+info = "Inflict 5 damage"
+
+[resource]
+script = ExtResource("1_l5gcd")
+name = "Knight"
+texture = ExtResource("3_ns1ou")
+hp = 15
+attacks = Array[ExtResource("1_bqbyc")]([SubResource("Resource_holsu"), SubResource("Resource_0j7o8")])

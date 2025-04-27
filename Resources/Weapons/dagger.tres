@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://b8svinhb84cpv"]
+
+[ext_resource type="Script" path="res://Scripts/base_weapon.gd" id="1_qeams"]
+[ext_resource type="Texture2D" uid="uid://bqu47vao16xr8" path="res://Assets/Weapons/iron_dagger.png" id="2_w5ir5"]
+
+[resource]
+script = ExtResource("1_qeams")
+texture = ExtResource("2_w5ir5")
+name = "DAGGER"
+desc = "STAB FOR 4 DAMAGE"
+damage = 4

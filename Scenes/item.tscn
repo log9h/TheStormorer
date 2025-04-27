@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqywyile7kjou"]
+
+[ext_resource type="Texture2D" uid="uid://cdjx7syckmlss" path="res://Assets/infobox-bg.png" id="1_t4thm"]
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="2_sqxxo"]
+[ext_resource type="FontFile" uid="uid://b7yylpgbk15oi" path="res://Assets/pixel_font_3x4.ttf" id="3_54acn"]
+[ext_resource type="Texture2D" uid="uid://bqu47vao16xr8" path="res://Assets/Weapons/iron_dagger.png" id="3_61t15"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5otd2"]
+texture = ExtResource("1_t4thm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mok6e"]
+font = ExtResource("3_54acn")
+font_color = Color(0.811765, 0.776471, 0.721569, 1)
+
+[node name="Item1" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxTexture_5otd2")
+script = ExtResource("2_sqxxo")
+
+[node name="RowsContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ColsContainer" type="HBoxContainer" parent="RowsContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="RowsContainer/ColsContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_61t15")
+expand_mode = 2
+
+[node name="ItemCapt" type="Label" parent="RowsContainer/ColsContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 0
+text = "BREAD (1)"
+label_settings = SubResource("LabelSettings_mok6e")
+vertical_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="RowsContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="ItemDesc" type="Label" parent="RowsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "HEAL 10 HP"
+label_settings = SubResource("LabelSettings_mok6e")
+vertical_alignment = 2
+
+[node name="ItemButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0.12549)
+layout_mode = 2
+
+[connection signal="button_down" from="ItemButton" to="." method="use"]

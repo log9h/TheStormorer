@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=3 uid="uid://xp5bk8kd1eda"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_rx8or"]
+[ext_resource type="Script" path="res://Scripts/sine_move.gd" id="3_ii8v7"]
+[ext_resource type="FontFile" uid="uid://p13r4thetkqe" path="res://Assets/pixelfontnokia.ttf" id="3_l0lfw"]
+[ext_resource type="Texture2D" uid="uid://3cgospsqntdn" path="res://Assets/Enemy Sprites/box.png" id="3_lyke5"]
+[ext_resource type="Texture2D" uid="uid://dwibdeohuk18h" path="res://Assets/enemy_actions.png" id="5_ieqjd"]
+[ext_resource type="PackedScene" uid="uid://td1aexiowtyw" path="res://Scenes/hover_for_info.tscn" id="6_1y8r8"]
+[ext_resource type="AudioStream" uid="uid://cvw1sfgoma3hj" path="res://Assets/hurt.wav" id="7_ewkfj"]
+
+[sub_resource type="Animation" id="Animation_hrc3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o10wy"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.293302, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1x0j7"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.5, 2), Vector2(2, 2.5), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcsf8"]
+_data = {
+"RESET": SubResource("Animation_hrc3w"),
+"hurt": SubResource("Animation_o10wy"),
+"idle": SubResource("Animation_1x0j7")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnb5u"]
+resource_local_to_scene = true
+font = ExtResource("3_l0lfw")
+font_color = Color(0.811765, 0.776471, 0.721569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqqa3"]
+font = ExtResource("3_l0lfw")
+font_color = Color(0.901961, 0.282353, 0.180392, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbbbm"]
+
+[node name="Enemy" type="Node2D"]
+position = Vector2(291, 214)
+script = ExtResource("1_rx8or")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_lyke5")
+region_rect = Rect2(240, 240, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_gcsf8")
+}
+
+[node name="EnemyTitle" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 16)
+offset_left = 22.0
+offset_top = -37.0
+offset_right = 148.0
+offset_bottom = -18.0
+text = "box"
+label_settings = SubResource("LabelSettings_gnb5u")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HPText" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 16)
+offset_left = 23.0
+offset_top = -17.0
+offset_right = 149.0
+offset_bottom = 2.0
+text = "HP:5/5"
+label_settings = SubResource("LabelSettings_nqqa3")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sine" type="Node2D" parent="."]
+script = ExtResource("3_ii8v7")
+amplitude = 3
+
+[node name="HoverForInfo" parent="Sine" instance=ExtResource("6_1y8r8")]
+position = Vector2(0, -36)
+
+[node name="NextActionIcon" parent="Sine/HoverForInfo" index="0"]
+texture = ExtResource("5_ieqjd")
+
+[node name="CollisionShape2D" parent="Sine/HoverForInfo" index="1"]
+shape = SubResource("RectangleShape2D_rbbbm")
+
+[node name="GlobalOuchie" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(356, 214)
+stream = ExtResource("7_ewkfj")
+volume_db = -16.563
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Sine/HoverForInfo"]

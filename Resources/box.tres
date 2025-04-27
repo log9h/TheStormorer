@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=6 format=3 uid="uid://4pw6s6m6t8b5"]
+
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_76pme"]
+[ext_resource type="Script" path="res://Scripts/base_attack.gd" id="1_pp21u"]
+[ext_resource type="Texture2D" uid="uid://3cgospsqntdn" path="res://Assets/Enemy Sprites/box.png" id="3_dmai7"]
+
+[sub_resource type="Resource" id="Resource_37v65"]
+script = ExtResource("1_pp21u")
+Icon = 0
+damage = 3
+info = "Inflict 3 damage"
+
+[sub_resource type="Resource" id="Resource_apq64"]
+script = ExtResource("1_pp21u")
+Icon = 3
+damage = 0
+info = "Nothing"
+
+[resource]
+script = ExtResource("1_76pme")
+name = "box"
+texture = ExtResource("3_dmai7")
+hp = 8
+attacks = Array[ExtResource("1_pp21u")]([SubResource("Resource_37v65"), SubResource("Resource_apq64")])

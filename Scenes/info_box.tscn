@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmjmwyyufhc5h"]
+
+[ext_resource type="Texture2D" uid="uid://cdjx7syckmlss" path="res://Assets/infobox-bg.png" id="1_outua"]
+[ext_resource type="Script" path="res://Scripts/info_box.gd" id="1_y2pp5"]
+[ext_resource type="FontFile" uid="uid://b7yylpgbk15oi" path="res://Assets/pixel_font_3x4.ttf" id="3_2761a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7s4ns"]
+texture = ExtResource("1_outua")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+modulate_color = Color(1, 1, 1, 0.501961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oj0io"]
+line_spacing = 0.0
+font = ExtResource("3_2761a")
+font_color = Color(0.811765, 0.776471, 0.721569, 1)
+
+[node name="InfoBox" type="Node2D"]
+z_index = 1
+script = ExtResource("1_y2pp5")
+
+[node name="Background" type="PanelContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(21, 26)
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7s4ns")
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "
+INFO!"
+label_settings = SubResource("LabelSettings_oj0io")

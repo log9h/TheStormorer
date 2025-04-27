@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmn1gnoafwlpq"]
+
+[ext_resource type="FontFile" uid="uid://b7yylpgbk15oi" path="res://Assets/pixel_font_3x4.ttf" id="1_nidkt"]
+[ext_resource type="Script" path="res://Scripts/items.gd" id="2_to023"]
+[ext_resource type="PackedScene" uid="uid://bqywyile7kjou" path="res://Scenes/item.tscn" id="3_b11e3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mok6e"]
+font = ExtResource("1_nidkt")
+font_color = Color(0.811765, 0.776471, 0.721569, 1)
+
+[node name="UI_BottomLeft" type="CanvasLayer"]
+
+[node name="Anchor" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="ItemsLabel" type="Label" parent="Anchor"]
+layout_mode = 2
+offset_left = 6.0
+offset_top = -235.0
+offset_right = 168.0
+offset_bottom = -216.0
+text = "
+ITEMS"
+label_settings = SubResource("LabelSettings_mok6e")
+
+[node name="DELETE" type="VBoxContainer" parent="Anchor"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 0
+offset_left = 6.0
+offset_top = -212.0
+offset_right = 133.0
+offset_bottom = -8.0
+theme_override_constants/separation = 4
+script = ExtResource("2_to023")
+
+[node name="Item1" parent="Anchor/DELETE" instance=ExtResource("3_b11e3")]
+layout_mode = 2
+
+[node name="WeaponsLabel" type="Label" parent="Anchor"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = -214.0
+offset_right = 234.0
+offset_bottom = -191.0
+text = "WEAPONS"
+label_settings = SubResource("LabelSettings_mok6e")

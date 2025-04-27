@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://c7e1t6vkeumu0"]
+
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_g75mv"]
+[ext_resource type="Script" path="res://Scripts/base_attack.gd" id="1_t7w85"]
+[ext_resource type="Texture2D" uid="uid://cohne0kxm5ekh" path="res://Assets/Enemy Sprites/crab.png" id="3_85e2l"]
+
+[sub_resource type="Resource" id="Resource_471su"]
+script = ExtResource("1_t7w85")
+Icon = 0
+damage = 1
+info = "Deal 1 damage"
+
+[resource]
+script = ExtResource("1_g75mv")
+name = "crab"
+texture = ExtResource("3_85e2l")
+hp = 40
+attacks = Array[ExtResource("1_t7w85")]([SubResource("Resource_471su")])
