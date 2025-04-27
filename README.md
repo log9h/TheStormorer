@@ -1,2 +1,2 @@
-made with Godot 4.0
+made in Godot 4.0
 https://qwarith.itch.io/stormorer
